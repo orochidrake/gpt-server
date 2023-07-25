@@ -1,15 +1,16 @@
 import express from "express";
-import { create, chatCreate} from './bot.js';
+import { create, chatCreate, createImage} from './bot.js';
 
 const app = express();
 
-app.get("/", async (req, res) => {
+app.use(express.json());
+
+app.post("/", async (req, res) => {
     try {
-        const { q } = req.query
 
-        if (!q) return res.send("error: no query")
+        if (!req.body.prompt) return res.send("error: prompt could not be empty")
 
-        const { data } = await create(q)
+        const { data } = await create(req.body.prompt)
 
         const { choices } = data
         res.send(choices[0].text);
@@ -20,16 +21,30 @@ app.get("/", async (req, res) => {
 
 });
 
-app.get("/chat", async (req, res) => {
+app.post("/chat", async (req, res) => {
     try {
-        const { q } = req.query
 
-        if (!q) return res.send("error: no query")
+        if (!req.body.prompt) return res.send("error: prompt could not be empty")
 
-        const { data } = await chatCreate(q)
+        const { data } = await chatCreate(req.body.prompt)
 
         const { choices } = data
         res.send(choices[0].message);
+
+    } catch (e) {
+        console.error(e);
+    }
+
+});
+
+app.post("/image", async (req, res) => {
+    try {
+
+        if (!req.body.prompt) return res.send("error: prompt could not be empty")
+
+        const { data } = await createImage(req.body.prompt)
+
+        res.send(data);
 
     } catch (e) {
         console.error(e);

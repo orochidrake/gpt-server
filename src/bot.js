@@ -21,9 +21,16 @@ export const create = (prompt) => openai.createCompletion({
 export const chatCreate = (prompt) => openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: [
-        { "role": "system", "content": "Você é um especialista em HTML, CSS, Javascript." }, 
+        { "role": "system", "content": "Você é um especialista em HTML, CSS, Javascript." },
         { role: "user", content: prompt }
     ],
     max_tokens: 50,
 
+});
+
+
+export const createImage = (prompt) => openai.createImage({
+    prompt,
+    n: 2,
+    size: "1024x1024",
 });
