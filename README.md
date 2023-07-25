@@ -1,14 +1,16 @@
-# gpt-server
-Servidor Utilizando Chat-Gpt4
+# Proxy-server para ChatGPT
 
-## ROTAS
-### Utilizando a rota "/' ele responde perguntas rapidas
-###Utilizando a rota "/chat' você inicia um chat basico com um Especialista em HTML, CSS e JavaScript
-###Utilizando a rota "/image' ele gera imagens no tamanho 1024x1024
+Um proxy server criado utilizando openai.com para responder perguntas, iniciar um mini chat com um Especialista em HTML, CSS e Javascript e gerador de imagens
 
-##formato de envio para todas as rotas
-'
+# Rotas
+
+Esse Proxy esta usando o Metodo "POST" com as seguintes rotas
+**/**
+**/chat**
+**/image**
+
+## Formato de envio do Body
+
 {
 	"prompt": "Sua Pergunta"
 }
-'
