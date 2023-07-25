@@ -1,0 +1,15 @@
+{
+  "name": "gpt-server",
+  "version": "1.0.0",
+  "description": "Servidor Utilizando Chat-Gpt4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
